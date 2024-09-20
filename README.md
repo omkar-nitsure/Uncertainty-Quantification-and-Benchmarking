@@ -83,8 +83,13 @@ $$K_{c}(f_{\theta}(x),e_{c})=\exp[-\frac{\frac{1}{n}||W_{c}f_{\theta}(x)-e_{c}||
 
 The training process tries to maximize the kernel value for the correct class and minimize it for all the wrong classes. The training objective and loss-function are as follows -
 
-$$\arg\operatorname*{max}_{c}K_{c}(f_{\theta}(x),e_{c})$$
-$$L(x,y)=-\sum_{c}y_{c}\log(K_{c})+(1-y_{c})\log(1-K_{c})$$
+$$
+\arg\max_{c} K_{c}(f_{\theta}(x), e_{c})
+$$
+
+$$
+L(x, y) = -\sum_{c} y_{c} \log(K_{c}) + (1 - y_{c}) \log(1 - K_{c})
+$$
 
 It ensures that the cluster centers are separated in the higher dimensional space. Cluster centers are computed again after each iteration. Uncertainty is the minimum of all kernel values.
 
@@ -97,9 +102,8 @@ This approach uses the idea of training different models in parallel and definin
 K different models are then trained per test sample during inference starting from the same base model where each model should have output probability distribution centred around some randomly picked class while maintaining similar loss on the training data. The optimization objective is -
 
 $$
-\operatorname*{max}_{\delta \in \Delta} \left( D\left(p(y \mid x, w), p(y \mid x, w + \delta)\right) + c \left( \log p(w + \delta \mid D) - \log p(w \mid D) + \gamma \right) \right)
+\text{max}_{\delta \in \Delta} \left( D\left(p(y \mid x, w), p(y \mid x, w + \delta)\right) + c \left( \log p(w + \delta \mid D) - \log p(w \mid D) + \gamma \right) \right)
 $$
-
 
 Here, D is usually the Kullback-Leibler (KL) divergence.
 
